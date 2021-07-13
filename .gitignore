@@ -1,2 +1,6 @@
 # Ignore temp files from other editors
 ~*
+
+# Ignore database file, too large and easily recreated
+mta_data.db
+data_backup/mta_data.db

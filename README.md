@@ -1,4 +1,4 @@
-# New York City transit traffic analysis
+# New York City MTA traffic analysis
 
 This project was developed for the Exploratory Data Analysis module of the Data Science and Machine Learning Bootcamp at Metis.
 
