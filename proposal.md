@@ -1,6 +1,6 @@
 # Project Proposal
-## Extremely Hot and Incredibly Crowded:
-### avoiding heat-illness in New York City's busiest MTA stations
+<h2>Extremely Hot and Incredibly Crowded:</h2>
+<h3>avoiding heat-illness in New York City's busiest MTA stations</h3>
 
 Heat stress and heat-related illnesses occur when the body is unable to cool itself and maintain a healthy temperature, and begins to overheat. Heat illness symptoms can range from mild (e.g., a rash or muscle spasms) to severe (e.g., heatstroke), and can kill.
 
