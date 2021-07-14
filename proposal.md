@@ -5,7 +5,7 @@ Heat stress and heat-related illnesses occur when the body is unable to cool its
 
 Although anyone can suffer from heat-related illness, adults over the age of 65, infants and young children, and people with existing health conditions (such asthma, COPD, heart disease, or high blood pressure) are at greater risk than others.
 
-Heat stress can be exacerbated by conditions that are extremely hot and incredibly crowded.
+Heat stress can be exacerbated by conditions that are extremely hot and incredibly crowded (see e.g., [Wexler, 2002](https://www.aafp.org/afp/2002/0601/p2307.html)).
 
 ### Question:
 
@@ -24,13 +24,13 @@ We will select the most recently available image (avoiding the summers of 2020 a
 The MTA publishes weekly turnstile data that provides ridership as measured by turnstile entries and exits, with readings taken every 4 hours, and [data publicly available](http://web.mta.info/developers/turnstile.html) going back to 2010. Based on the year of the selected high-quality NASA Landsat satellite image (see above for selection criteria), we will collect the weekly MTA transit data for the summer months of that year. That is, if a quality satellite image of New York City is available in June 2018, we will collect the weekly MTA transit data for all weeks spanning June through August 2018. We will use the total number of turnstile entrances/exits at each station to determine the relative number of riders at each station compared to the total number of MTA users, and use this value as a proxy for a crowding index.
 <!--This calculation will assume that all stations are the same size (i.e., area in square feet), which may be a flawed assumption.-->
 
-By combining the heat index and the crowding index, we will be able to determine which MTA stations pose the greatest hazard to people at high-risk for heat-related illnesses.
+By combining the heat and the crowding indices into a risk index, we will be able to determine which MTA stations pose the greatest hazard to people at high-risk for heat-related illnesses.
 
 ### Tools:
 
-To download the MTA turnstile data from the [MTA website](http://web.mta.info/developers/turnstile.html) and create an SQL database, we will use the python script `get_mta.py`, [available here](https://github.com/hmlewis-astro/mta_analysis/blob/main/get_mta.py). To query from that database into Python, we will use SQLAlchemy, and from that query, we will create a pandas dataframe with the MTA turnstile data and corresponding latitude, longitude coordinates for each station.
+To download the MTA turnstile data and create an SQL database, we will use the python script `get_mta.py`, [available here](https://github.com/hmlewis-astro/mta_analysis/blob/main/get_mta.py). To query from that database into Python, we will use SQLAlchemy, and from that query, we will create a pandas dataframe with the MTA turnstile data and corresponding latitude, longitude coordinates for each station.
 
-We will use previously developed algorithms from the US Geological Survey to extract surface temperature measurements from the selected NASA Landsat 8 satellite image. These algorithms create a `.geojson` file with surface temperature measurements, and the corresponding latitude and longitude coordinates, within the image area at 30 meter resolution. This file will be read into Python with the geopandas package, and can be merged with the pandas dataframe containing the MTA turnstile data.
+We will use [previously developed algorithms](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-collection-2-surface-temperature) from the US Geological Survey to extract surface temperature measurements from the selected NASA Landsat 8 satellite image. These algorithms create a `.geojson` file with surface temperature measurements, and the corresponding latitude and longitude coordinates at each measurement, over the image area. This file will be read into Python with the geopandas package, and can be merged with the pandas dataframe containing the MTA turnstile data.
 
 We will use the pandas and matplotlib packages to explore that data, derive the heat and crowding indices, determine the risk index for each MTA station (by some weighted combination of the heat and crowding indices), and produce a list of the highest risk MTA stations for heat illnesses. Given sufficient time, we may also utilize the plotly package to present the risk index for each station on an interactive map.
 
