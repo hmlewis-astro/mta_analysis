@@ -5,7 +5,7 @@ Heat stress and heat-related illnesses occur when the body is unable to cool its
 
 Although anyone can suffer from heat-related illness, adults over the age of 65, infants and young children, and people with existing health conditions (such asthma, COPD, heart disease, or high blood pressure) are at greater risk than others.
 
-Heat stress can be exacerbated by conditions that are extremely hot and incredibly crowded (see e.g., [Wexler, 2002](https://www.aafp.org/afp/2002/0601/p2307.html)).
+Heat stress can be exacerbated by conditions that are [extremely hot and incredibly crowded](https://www.aafp.org/afp/2002/0601/p2307.html).
 
 ### Question:
 
