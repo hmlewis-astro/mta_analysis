@@ -2,7 +2,7 @@
 
 This project was developed for the Exploratory Data Analysis module of the Data Science and Machine Learning Bootcamp at Metis.
 
-The project proposal is available [here](proposal.md).
+The project proposal is available [here](https://github.com/hmlewis-astro/mta_analysis/blob/main/proposal.md).
 
 <!--The Minimum Viable Product (MVP) is available here (link here to markdown).-->
 

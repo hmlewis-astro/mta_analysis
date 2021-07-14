@@ -28,7 +28,7 @@ By combining the heat and the crowding indices into a risk index, we will be abl
 
 ### Tools:
 
-To download the MTA turnstile data and create an SQL database, we will use the python script `get_mta.py`, [available here](https://github.com/hmlewis-astro/mta_analysis/blob/main/get_mta.py). To query from that database into Python, we will use SQLAlchemy, and from that query, we will create a pandas dataframe with the MTA turnstile data  and corresponding latitude, longitude coordinates for each station.
+To download the MTA turnstile data and create an SQL database, we will use the python script `get_mta.py`, [available here](get_mta.py). To query from that database into Python, we will use SQLAlchemy, and from that query, we will create a pandas dataframe with the MTA turnstile data  and corresponding latitude, longitude coordinates for each station.
 
 We will use [previously developed algorithms](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-collection-2-surface-temperature) from the US Geological Survey to extract surface temperature measurements from the selected NASA Landsat 8 satellite image. These algorithms create a `.geojson` file with surface temperature measurements, and the corresponding latitude and longitude coordinates at each measurement, over the image area. This file will be read into Python with the geopandas package, and can be merged with the pandas dataframe containing the MTA turnstile data.
 
