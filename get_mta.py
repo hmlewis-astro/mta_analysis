@@ -71,7 +71,7 @@ if __name__ == '__main__':
     print(f"\n{len(weeks)} weeks to collect:\n")
     print(weeks)
 
-    if input(f"\nContinue? (Y/n) ").lower() not in ['yes', 'y']:
+    if input(f"\nContinue? (y/n) ").lower() not in ['yes', 'y']:
         exit()
 
     # connect to (or create) mta_data SQLite database
