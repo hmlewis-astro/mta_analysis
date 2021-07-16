@@ -6,4 +6,4 @@ mta_data.db
 data_backup/mta_data.db
 
 # Ignore pycache
-__pycache__*
+*.pyc
