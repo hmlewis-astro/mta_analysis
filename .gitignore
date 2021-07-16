@@ -4,3 +4,6 @@
 # Ignore database file, too large and easily recreated
 mta_data.db
 data_backup/mta_data.db
+
+# Ignore pycache
+__pychache__*
