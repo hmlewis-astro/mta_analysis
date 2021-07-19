@@ -1,9 +1,16 @@
 # Ignore temp files from other editors
 ~*
 
+# Ignore pycache
+*.pyc
+
+# Ignore raster files
+*.cpg
+*.dbf
+*.prj
+*.shx
+
 # Ignore database file, too large and easily recreated
 mta_data.db
 data_backup/mta_data.db
 
-# Ignore pycache
-*.pyc
