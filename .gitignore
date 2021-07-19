@@ -4,11 +4,8 @@
 # Ignore pycache
 *.pyc
 
-# Ignore raster files
-*.cpg
-*.dbf
-*.prj
-*.shx
+# Ignore water files, need to be downloaded manually
+heat_data/water/*
 
 # Ignore database file, too large and easily recreated
 mta_data.db

@@ -11,6 +11,8 @@ STATE_TRACTS="./data/output/$STATE/*b.shp"
 CITY_BOUNDARY="./data/boundaries-census/$CITY.json"
 CITY_RASTER="./data/output/images/$STATE-$CITY/$RASTER"
 OCEAN="./water/ne_10m_ocean.shp"
+# file needs to be manually downloaded and placed in the proper folder:
+# www.naturalearthdata.com/download/10m/physical/ne_10m_ocean.zip
 WATER_BODIES="./water/USA_Detailed_Water_Bodies.shp"
 
 
