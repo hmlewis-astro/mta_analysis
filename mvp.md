@@ -17,6 +17,6 @@ To determine those MTA stations that pose a risk due to **crowds**, we use the t
 </p>
 
 
-These results show that there is a significant variation in both temperature and MTA ridership over the entire city. Understanding separately the impact of heat and crowds on each station is an important step in reaching our ultimate goal of creating a heat-illness risk index for each station.
+These results show that there is a significant variation in both temperature and MTA ridership over the entire city. Understanding separately the impact of heat and crowds on each station is an important step in reaching our ultimate goal of creating a heat-illness risk index (which accounts for risk due to both heat and crowding) for each station.
 
-Next, we will determine the risk index for each MTA station (by some weighted combination of the heat and crowding indices); to do so, the `geopandas` dataframe containing the land heat indices and the `pandas` dataframe containing the station crowd indices need to be merged based on the Census block within which each station is located.
+To create a heat-illness risk index, the datasets containing the Census block heat indices and the station crowd indices need to be merged based on the Census block within which each station is located. Using the known geometry for each Census block, and the latitude and longitude coordinates for each station, we will assign each station a heat index from the heat index map.
