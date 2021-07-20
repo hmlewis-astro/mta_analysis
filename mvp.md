@@ -3,7 +3,7 @@
 
 The goal of this project is to determine which MTA stations pose the greatest hazard&mdash;due to the combination of high heat and large crowds&mdash;to people at high-risk for heat-related illnesses.
 
-![heat index map](https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-heat-index.png)
+<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-heat-index.png" width="200" />
 
 
 ![crowd index map](https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-crowd-index.png)
