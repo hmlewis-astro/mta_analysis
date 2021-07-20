@@ -1,15 +1,18 @@
 # Minimum Viable Product
 ## Extremely Hot and Incredibly Crowded: avoiding heat-illness in New York City's busiest MTA stations
 
-The goal of this project is to determine which MTA stations pose the greatest hazard&mdash;due to the combination of high heat and large crowds&mdash;to people at high-risk for heat-related illnesses.
+The goal of this project is to determine those MTA stations that pose the greatest hazard&mdash;due to the combination of high heat and large crowds&mdash;to people at high-risk for heat-related illnesses.
+
+To determine those MTA stations that pose the greatest risk due to **extreme heat**, we utilize thermal imagery of New York City captured during summer months (defined as June, July, or August) from the NASA Landsat 8 satellite. The temperature in each Census block (from NYC OpenData) is derived from the image, and a heat index from 1 (low heat, low-risk) to 10 (high heat, high-risk) is assigned to each block. The map below shows the heat index over the entire city, where blue/green colors represent land areas with low heat indices (generally, near water or green-space) and orange/red colors represent areas with high heat indices (denser cityscapes or airports).
 
 <p align="center">
-<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-heat-index.png" width="512" />
+<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-heat-index.png" width="800" />
 </p>
 
 
-
-![crowd index map](https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-crowd-index.png)
+<p align="center">
+<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/heat_data/data/output/analysis_out/final/plots/new-york-crowd-index.png" width="800" />
+</p>
 
 ### Data description:
 
