@@ -11,8 +11,6 @@ STATE_TRACTS="./data/output/$STATE/*b.shp"
 CITY_BOUNDARY="./data/boundaries-census/$CITY.json"
 CITY_RASTER="./data/output/images/$STATE-$CITY/$RASTER"
 OCEAN="./water/ne_10m_ocean.shp"
-# file needs to be manually downloaded and placed in the proper folder:
-# www.naturalearthdata.com/download/10m/physical/ne_10m_ocean.zip
 WATER_BODIES="./water/USA_Detailed_Water_Bodies.shp"
 
 
@@ -56,10 +54,11 @@ else
 	echo "A2 finished $KEY"
 
 	# hole punch for ocean and waterbodies
-	mapshaper ./data/output/analysis_out/$CITY/a2_clip_city.shp \
-	-erase $OCEAN -o ./data/output/analysis_out/$CITY/a3_erase_ocean.shp
+	#mapshaper ./data/output/analysis_out/$CITY/a2_clip_city.shp \
+	#-erase $OCEAN -o ./data/output/analysis_out/$CITY/a3_erase_ocean.shp
 	echo "A3 finished $KEY"
-	mapshaper ./data/output/analysis_out/$CITY/a3_erase_ocean.shp \
+	#mapshaper ./data/output/analysis_out/$CITY/a3_erase_ocean.shp \
+	mapshaper ./data/output/analysis_out/$CITY/a2_clip_city.shp \
 	-erase $WATER_BODIES -o ./data/output/analysis_out/$CITY/a4_erase_wb.shp
 	echo "A4 finished $KEY"
 

@@ -11,3 +11,6 @@ heat_data/water/*
 mta_data.db
 data_backup/mta_data.db
 
+# Ignore scratchwork jupyter notebook
+mta_heat.ipynb
+
