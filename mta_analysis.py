@@ -146,8 +146,8 @@ station_df.rename(columns={'HOURLY_ENTRIES': 'NET_ENTRIES'}, inplace=True)
 # reset index so that index corresponds to ranked net entries
 station_df.reset_index(drop=True, inplace=True)
 
-# drop the few stations that still don't have lat/lon coordinates
-station_df.dropna(inplace=True)
+# drop the few stations that still don't have lat/lon coordinates, ONLY IF they are also PATH stations
+station_df = station_df[~((np.isnan(station_df['LAT']) | np.isnan(station_df['LON'])) & (station_df['SYSTEM'] == 'PATH'))]
 
 
 
