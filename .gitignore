@@ -3,6 +3,7 @@
 
 # Ignore pycache
 *.pyc
+.ipynb_checkpoints/
 
 # Ignore water files, need to be downloaded manually
 heat_data/water/*
