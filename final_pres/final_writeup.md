@@ -23,7 +23,9 @@ The MTA publishes weekly turnstile data that provides transit ridership as measu
 ### Algorithms
 
 #### Cleaning & EDA
+Given the SQL database containing MTA turnstile data, I create a new table within that database with the available geolocation information. Using SQLAlchemy in Python, these tables are joined (on the `booth`/`C/A` and `unit`) so that each turnstile now also has an associated latitude and longitude. In this query, I also create a new `system` key which differentiates stations in the MTA versus PATH systems. From the database containing all turnstile data for the year 2018, only data collected during summer months (i.e., between 06/01/2018 and 08/31/2018) were selected for this analysis.
 
+I then calculate the time passed (in seconds) and the change in the turnstile `entries` counts between each reading; again, readings occur roughly every four hours. Here, there are two peculiarities in the data: (1) some turnstiles are counting backwards and (2) turnstiles appear to reset, leading to apparent increases in `entries` on the order of $10^5$-$10^7$ riders over just a few hours.
 
 #### Aggregation
 
@@ -35,8 +37,7 @@ The MTA publishes weekly turnstile data that provides transit ridership as measu
 - Mapshapper (employed by pre-packaged analysis algorithms by the USGS) for creating and altering geographic databases
 - Pandas, GeoPandas, and Numpy for data analysis
 - GeoPandas for handling and plotting geographic data
-- Matplotlib for plotting
-- Tableau for interactive visualizations
+- Matplotlib and Tableau for plotting and interactive visualizations
 
 ### Communication
 
