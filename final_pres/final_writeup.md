@@ -25,7 +25,7 @@ The MTA publishes weekly turnstile data that provides transit ridership as measu
 #### Cleaning & EDA
 Given the SQL database containing MTA turnstile data, I create a new table within that database with the available geolocation information. Using SQLAlchemy in Python, these tables are joined (on the `booth`/`C/A` and `unit`) so that each turnstile now also has an associated latitude and longitude. In this query, I also create a new `system` key which differentiates stations in the MTA versus PATH systems. From the database containing all turnstile data for the year 2018, only data collected during summer months (i.e., between 06/01/2018 and 08/31/2018) were selected for this analysis.
 
-I then calculate the time passed (in seconds) and the change in the turnstile `entries` counts between each reading; again, readings occur roughly every four hours. Here, there are two peculiarities in the data: (1) some turnstiles are counting backwards and (2) turnstiles appear to reset, leading to apparent increases in `entries` on the order of $10^5$-$10^7$ riders over just a few hours.
+I then calculate the time passed (in seconds) and the change in the turnstile `entries` counts between each reading; again, readings occur roughly every four hours. Here, there are two peculiarities in the data: (1) some turnstiles are counting backwards and (2) turnstiles appear to reset, leading to apparent increases in `entries` on the order of 10<sup>5</sup>-10<sup>7</sup> riders over just a few hours. To deal with these, I (1) always take the absolute value of the number of entries between measurements and (2) set an upper limit of 3 entries per turnstile per second.
 
 #### Aggregation
 
@@ -44,5 +44,5 @@ I then calculate the time passed (in seconds) and the change in the turnstile `e
 In addition to the slides and visuals presented here, the Tableau dashboard [NYC MTA Heat](https://public.tableau.com/views/NYCMTAHeatAnalysis/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link) will be included in a forthcoming blog post to be shared on my (work-in-progress) GitHub Pages [website](https://hmlewis-astro.github.io/).
 
 <p align="center">
-<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/final_pres/NYC_MTA_heat_dashboard.png" width="400" />
+<img src="https://github.com/hmlewis-astro/mta_analysis/blob/main/final_pres/NYC_MTA_heat_dashboard.png" width="512" />
 </p>
