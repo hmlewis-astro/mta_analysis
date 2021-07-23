@@ -6,4 +6,4 @@ The project proposal is available [here](https://github.com/hmlewis-astro/mta_an
 
 The Minimum Viable Product (MVP) is available [here](https://github.com/hmlewis-astro/mta_analysis/blob/main/mvp.md).
 
-<!--The full code (link here to notebook), write-up (link here to PDF), and slide deck (link here to PDF) are also available.-->
+The [description of the full code (with links to each script)](https://github.com/hmlewis-astro/mta_analysis/blob/main/final_pres/run_code.md), [write-up](https://github.com/hmlewis-astro/mta_analysis/blob/main/final_pres/final_writeup.md), and [slide deck](https://github.com/hmlewis-astro/mta_analysis/blob/main/final_pres/Lewis_mta_heat_analysis.pdf) are also available.
