@@ -5,11 +5,11 @@
 import os
 
 # if MTA database already exisits, delete to avoid duplicating data
-#if os.path.exists('mta_data.db'):
-    #os.remove('mta_data.db')
+if os.path.exists('mta_data.db'):
+    os.remove('mta_data.db')
 
 # get MTA data from same year as satellite image
-#os.system('python get_mta.py "18"')
+os.system('python get_mta.py "18"')
 
 
 
@@ -45,6 +45,17 @@ def insert_table_from_csv(csv_list, engine):
 
 
 
+def check_missing_coord(df):
+    n_missing = max(len(df[np.isnan(df['LAT'])]), len(df[np.isnan(df['LON'])]))
+    if n_missing != 0:
+        print(f"\n{n_missing} stations are missing spatial coordinates:")
+        print(df[np.isnan(df['LAT']) | np.isnan(df['LON'])])
+        print('\n')
+    else:
+        print('\nNo stations are missing spatial coordinates!\n')
+
+
+
 # create SQL database engine
 mta_data_engine = create_engine("sqlite:///mta_data.db")
 
@@ -57,11 +68,11 @@ print('\nTables in database:', insp.get_table_names(), '\n')
 
 # rename column 'C/A' in the mta_data table to 'BOOTH' for consistency with the
 # geocoded table
-#pd.read_sql('''
-            #ALTER TABLE mta_data
-            #RENAME COLUMN "C/A" TO "BOOTH";
-            #''',
-            #mta_data_engine);
+pd.read_sql('''
+            ALTER TABLE mta_data
+            RENAME COLUMN "C/A" TO "BOOTH";
+            ''',
+            mta_data_engine);
 
 # join mta_data and geocoded tables on the booth and unit numbers
 # select turnstile-level information, include entries and exits, date, time,
@@ -137,29 +148,35 @@ mta_df['HOURLY_ENTRIES'] = [np.abs(entries - mta_df['PREV_ENTRIES'][i]) \
 # sort by net entries
 station_df = mta_df.groupby(['STATION','LINENAME'], as_index=False).agg({'LAT':'first', 'LON':'first', 'SYSTEM':'first', 'HOURLY_ENTRIES':'sum'}).sort_values('HOURLY_ENTRIES', ascending=False)
 
-# check which stations still don't have lat/lon coordinates
-#print(station_df[np.isnan(station_df['LAT'])])
-
 # rename the 'HOURLY_ENTRIES' column to 'NET_ENTRIES'
 station_df.rename(columns={'HOURLY_ENTRIES': 'NET_ENTRIES'}, inplace=True)
 
+# check which stations are missing lat/lon coordinates
+check_missing_coord(station_df)
+
+# drop the few stations that are missing lat/lon coordinates, ONLY IF they
+# are also PATH stations
+station_df = station_df[~((np.isnan(station_df['LAT']) | np.isnan(station_df['LON'])) & (station_df['SYSTEM'] == 'PATH'))]
+
+# make sure there are no remaining stations that are missing lat/lon coordinates
+check_missing_coord(station_df)
+
 # reset index so that index corresponds to ranked net entries
 station_df.reset_index(drop=True, inplace=True)
-
-# drop the few stations that still don't have lat/lon coordinates, ONLY IF they are also PATH stations
-station_df = station_df[~((np.isnan(station_df['LAT']) | np.isnan(station_df['LON'])) & (station_df['SYSTEM'] == 'PATH'))]
 
 
 
 # create 'CROWD_INDEX'
 min_entries = np.min(station_df['NET_ENTRIES'])
 max_entries = np.max(station_df['NET_ENTRIES'])
-# scale the log of the net entries of each station from 1 to 10 (10 being the most crowded, 1 being the least)
+# scale the log of the net entries of each station from 1 to 10 (10 being the
+# most crowded, 1 being the least)
 station_df['CROWD_INDEX'] = station_df['NET_ENTRIES'].apply(lambda x: 1.0 + 9.0 * np.log10(x/min_entries) / np.log10(max_entries/min_entries))
 
 
-# pickle final dataframe
-# if pickled file already exisits, delete
+
+# save final dataframe
+# if saved file already exisits, delete
 if os.path.exists('mta_data_analyzed.csv'):
     os.remove('mta_data_analyzed.csv')
 
