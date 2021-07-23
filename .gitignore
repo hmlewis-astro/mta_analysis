@@ -11,6 +11,9 @@ heat_data/water/*
 mta_data.db
 data_backup/mta_data.db
 
+# Ignore powerpoint file, just display pdf
+final_pres/*.pptx
+
 # Ignore scratchwork jupyter notebook
 mta_heat.ipynb
 
