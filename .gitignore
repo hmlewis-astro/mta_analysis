@@ -4,6 +4,7 @@
 # Ignore pycache
 *.pyc
 .ipynb_checkpoints/
+.DS_Store
 
 # Ignore water files, need to be downloaded manually
 heat_data/water/*
@@ -11,6 +12,7 @@ heat_data/water/*
 # Ignore database file, too large and easily recreated
 mta_data.db
 data_backup/mta_data.db
+data_backup/.DS_Store
 
 # Ignore powerpoint files
 final_pres/*.pptx
@@ -18,4 +20,7 @@ final_pres/qr-code.png
 
 # Ignore scratchwork jupyter notebook
 mta_heat.ipynb
+
+# Ignore old README version
+README_old.md
 
